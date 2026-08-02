@@ -29,7 +29,7 @@
     --line:rgba(150,96,42,.17);   /* خط دافئ ينسجم مع الكريمي بدل الرمادي البارد */
     --radius:20px;
     --shadow:0 22px 50px -26px rgba(20,30,70,.32);
-    --ease:cubic-bezier(.22,.72,.3,1);   /* منحنى واحد لكل الحركة */
+    --ease:cubic-bezier(.25,.62,.3,1);   /* منحنى واحد لكل الحركة — تباطؤ لطيف */
     --sans:'IBM Plex Sans Arabic',-apple-system,'Segoe UI',Tahoma,sans-serif;
     --serif:'Amiri','Times New Roman',serif;
   }
@@ -69,9 +69,9 @@
     padding:11px 24px;border-radius:100px;
     font-weight:600;font-size:.92rem;font-family:var(--sans);
     border:1px solid var(--ink);cursor:pointer;
-    transition:background .3s,color .3s,border-color .3s,transform .3s;
+    transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease);
   }
-  .btn:hover{background:var(--purple);border-color:var(--purple);transform:translateY(-2px)}
+  .btn:hover{background:var(--purple);border-color:var(--purple);transform:translateY(-1px)}
   .btn.ghost{background:transparent;color:var(--ink)}
   .btn.ghost:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
   .btn.light{background:var(--cream);color:var(--ink);border-color:var(--cream)}
@@ -108,8 +108,8 @@
     padding:6px 16px;border-radius:100px;font-size:.82rem;font-weight:600;
     margin-bottom:20px;
   }
-  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pulse 2s infinite}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);animation:pulse 3s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
   h1{
     font-family:var(--serif);font-weight:700;
     font-size:clamp(2.3rem,4.6vw,3.5rem);
@@ -151,9 +151,9 @@
   .svc{
     background:#FFFBF4;border:1px solid var(--line);border-radius:var(--radius);
     padding:30px 24px;position:relative;overflow:hidden;
-    transition:transform .3s,box-shadow .3s,border-color .3s;
+    transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);
   }
-  .svc:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .svc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
   .svc::before{content:"";position:absolute;top:0;right:0;left:0;height:5px;background:var(--c)}
   .svc .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px;background:var(--c-soft)}
   .svc .ic svg{width:23px;height:23px;stroke:var(--c-ink)}
@@ -174,9 +174,9 @@
   .act{
     background:var(--cream);border:1px solid var(--line);border-radius:16px;
     padding:22px 12px;text-align:center;
-    transition:transform .3s,border-color .3s,box-shadow .3s;
+    transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease);
   }
-  .act:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 14px 30px -18px rgba(20,30,70,.4)}
+  .act:hover{transform:translateY(-2px);border-color:var(--c);box-shadow:0 14px 30px -18px rgba(20,30,70,.4)}
   .act .ic{width:44px;height:44px;margin:0 auto 10px;border-radius:50%;background:var(--c-soft);display:grid;place-items:center}
   .act .ic svg{width:22px;height:22px;stroke:var(--c-ink)}
   .act b{font-size:.88rem;font-weight:600;display:block;line-height:1.55;color:var(--ink)}
@@ -202,7 +202,7 @@
   }
   .feat-item{
     background:var(--ink);padding:28px 28px 30px;
-    transition:background .35s;
+    transition:background .5s var(--ease);
   }
   .feat-item:hover{background:#1C2857}
   .feat-item .num{
@@ -222,10 +222,10 @@
     display:flex;align-items:center;gap:9px;
     background:#FFFBF4;border:1px solid var(--line);
     padding:12px 24px;border-radius:100px;font-weight:500;font-size:.93rem;color:var(--ink);
-    transition:transform .3s,background .3s,color .3s,border-color .3s;
+    transition:transform .45s var(--ease),background .45s var(--ease),color .45s var(--ease),border-color .45s var(--ease);
   }
   .aud svg{width:18px;height:18px;stroke:var(--c-ink)}
-  .aud:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);transform:translateY(-3px)}
+  .aud:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);transform:translateY(-2px)}
   .aud:hover svg{stroke:var(--c)}
   .aud:nth-child(4n+1){--c:#F0A818;--c-ink:#B87D06}
   .aud:nth-child(4n+2){--c:#0CA89C;--c-ink:#0A8A80}
@@ -254,30 +254,30 @@
 
   /* ===== Reveal ===== */
   .reveal{
-    opacity:0;transform:translateY(20px);
-    transition:opacity .75s var(--ease),transform .75s var(--ease);
+    opacity:0;transform:translateY(11px);
+    transition:opacity 1s var(--ease),transform 1s var(--ease);
     transition-delay:var(--d,0ms);
   }
   .reveal.in{opacity:1;transform:none}
   .no-js .reveal{opacity:1;transform:none}
 
   /* دخول المقدمة عند فتح الصفحة — الشعار أولًا ثم يُرسم القوس ثم يصعد النص */
-  @keyframes riseIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-  @keyframes logoIn{from{opacity:0;transform:translateY(16px) scale(.972)}to{opacity:1;transform:none}}
+  @keyframes riseIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @keyframes logoIn{from{opacity:0;transform:translateY(9px) scale(.988)}to{opacity:1;transform:none}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   @keyframes drawArc{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
   @keyframes brushIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-  .hero .badge,.hero h1,.hero p,.hero-cta{opacity:0;animation:riseIn .85s var(--ease) forwards}
-  .hero .badge{animation-delay:.36s}
-  .hero h1{animation-delay:.46s}
-  .hero p{animation-delay:.56s}
+  .hero .badge,.hero h1,.hero p,.hero-cta{opacity:0;animation:riseIn 1.05s var(--ease) forwards}
+  .hero .badge{animation-delay:.30s}
+  .hero h1{animation-delay:.42s}
+  .hero p{animation-delay:.54s}
   .hero-cta{animation-delay:.66s}
-  .hero-logo img{opacity:0;animation:logoIn 1s var(--ease) .1s forwards}
-  .hero-logo::before{opacity:0;animation:fadeIn 1.7s ease .45s forwards}
-  .hero-arc path{stroke-dasharray:1;stroke-dashoffset:1;animation:drawArc 1.9s var(--ease) .34s forwards}
+  .hero-logo img{opacity:0;animation:logoIn 1.35s var(--ease) .1s forwards}
+  .hero-logo::before{opacity:0;animation:fadeIn 2.3s ease .4s forwards}
+  .hero-arc path{stroke-dasharray:1;stroke-dashoffset:1;animation:drawArc 2.5s var(--ease) .3s forwards}
   /* ضربة الفرشاة تُرسم من اليمين لليسار مع اتجاه الكتابة */
   .brush{transform-origin:100% 50%;transform:scaleX(0)}
-  .feat-head.in .brush{animation:brushIn .8s var(--ease) .26s forwards}
+  .feat-head.in .brush{animation:brushIn 1.05s var(--ease) .3s forwards}
   .no-js .brush{transform:none}
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
@@ -592,7 +592,7 @@
   document.querySelectorAll('.svc-grid,.acts-grid,.feat-grid,.aud-row').forEach(g => {
     [...g.children].forEach((c, i) => {
       c.classList.add('reveal');
-      c.style.setProperty('--d', (i * 65) + 'ms');
+      c.style.setProperty('--d', (i * 55) + 'ms');
     });
   });
 
