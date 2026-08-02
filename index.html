@@ -29,6 +29,7 @@
     --line:rgba(150,96,42,.17);   /* خط دافئ ينسجم مع الكريمي بدل الرمادي البارد */
     --radius:20px;
     --shadow:0 22px 50px -26px rgba(20,30,70,.32);
+    --ease:cubic-bezier(.22,.72,.3,1);   /* منحنى واحد لكل الحركة */
     --sans:'IBM Plex Sans Arabic',-apple-system,'Segoe UI',Tahoma,sans-serif;
     --serif:'Amiri','Times New Roman',serif;
   }
@@ -252,12 +253,38 @@
   .foot .heart{font-size:.9em;vertical-align:-.05em}
 
   /* ===== Reveal ===== */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal{
+    opacity:0;transform:translateY(20px);
+    transition:opacity .75s var(--ease),transform .75s var(--ease);
+    transition-delay:var(--d,0ms);
+  }
   .reveal.in{opacity:1;transform:none}
   .no-js .reveal{opacity:1;transform:none}
+
+  /* دخول المقدمة عند فتح الصفحة — الشعار أولًا ثم يُرسم القوس ثم يصعد النص */
+  @keyframes riseIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes logoIn{from{opacity:0;transform:translateY(16px) scale(.972)}to{opacity:1;transform:none}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes drawArc{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  @keyframes brushIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .hero .badge,.hero h1,.hero p,.hero-cta{opacity:0;animation:riseIn .85s var(--ease) forwards}
+  .hero .badge{animation-delay:.36s}
+  .hero h1{animation-delay:.46s}
+  .hero p{animation-delay:.56s}
+  .hero-cta{animation-delay:.66s}
+  .hero-logo img{opacity:0;animation:logoIn 1s var(--ease) .1s forwards}
+  .hero-logo::before{opacity:0;animation:fadeIn 1.7s ease .45s forwards}
+  .hero-arc path{stroke-dasharray:1;stroke-dashoffset:1;animation:drawArc 1.9s var(--ease) .34s forwards}
+  /* ضربة الفرشاة تُرسم من اليمين لليسار مع اتجاه الكتابة */
+  .brush{transform-origin:100% 50%;transform:scaleX(0)}
+  .feat-head.in .brush{animation:brushIn .8s var(--ease) .26s forwards}
+  .no-js .brush{transform:none}
   @media (prefers-reduced-motion:reduce){
     .reveal{opacity:1;transform:none;transition:none}
-    .badge .dot{animation:none}
+    .badge .dot,.feat-head.in .brush{animation:none}
+    .hero .badge,.hero h1,.hero p,.hero-cta,.hero-logo img,.hero-logo::before{opacity:1;animation:none}
+    .hero-arc path{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+    .brush{transform:none}
     html{scroll-behavior:auto}
   }
 
@@ -296,6 +323,9 @@
   /* ===== Print / PDF (العميل قد يطبع الصفحة أو يحفظها PDF) ===== */
   @media print{
     .reveal{opacity:1!important;transform:none!important}
+    .hero .badge,.hero h1,.hero p,.hero-cta,.hero-logo img,.hero-logo::before{opacity:1!important;animation:none!important}
+    .hero-arc path{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
+    .brush{transform:none!important;animation:none!important}
     header{display:none}
     .hero::after{display:none}   /* الحبيبات تضخّم ملف PDF بلا فائدة على الورق */
     body{font-size:12pt;background:#fff}
@@ -363,8 +393,8 @@
             <stop offset="1" stop-color="#E44860" stop-opacity="0"/>
           </linearGradient>
         </defs>
-        <path d="M14 442C14 200 124 22 280 22s266 178 266 420" stroke="url(#arcA)" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M52 442C52 236 148 78 280 78s228 158 228 364" stroke="url(#arcB)" stroke-width="1.6" stroke-linecap="round"/>
+        <path pathLength="1" d="M14 442C14 200 124 22 280 22s266 178 266 420" stroke="url(#arcA)" stroke-width="2.4" stroke-linecap="round"/>
+        <path pathLength="1" d="M52 442C52 236 148 78 280 78s228 158 228 364" stroke="url(#arcB)" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
       <img src="img/logo.png" width="1000" height="791" alt="شعار فُسحة — اللحظة اللي الكل يتحمس لها">
       </div>
@@ -500,7 +530,7 @@
       <span class="kicker">الفئات المستهدفة</span>
       <h2>لمن نقدّم التجربة؟</h2>
     </div>
-    <div class="aud-row reveal">
+    <div class="aud-row">
       <span class="aud"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M18 8h1a3 3 0 0 1 0 6h-1M4 8h14v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Z"/><path d="M8 4v2M12 4v2"/></svg>المقاهي</span>
       <span class="aud"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a3 3 0 0 1 6 0v2M4 13h16"/></svg>الشركات</span>
       <span class="aud"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l2.4 5.2 5.6.7-4.2 3.9 1.1 5.6L12 15.7 7.1 18.4l1.1-5.6L4 8.9l5.6-.7L12 3Z"/></svg>المناسبات الخاصة</span>
@@ -558,6 +588,14 @@
   const hdr = document.querySelector('header');
   const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 8);
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  // تتابع مرتّب داخل كل شبكة
+  document.querySelectorAll('.svc-grid,.acts-grid,.feat-grid,.aud-row').forEach(g => {
+    [...g.children].forEach((c, i) => {
+      c.classList.add('reveal');
+      c.style.setProperty('--d', (i * 65) + 'ms');
+    });
+  });
+
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: .12 });
