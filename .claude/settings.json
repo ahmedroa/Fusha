@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node rev.js)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/Users/ahmed/Desktop/untitled folder 2/img/logo.png\")",
+      "Bash(sips -Z 900 chk_logo.png)",
+      "Bash(node probe_a11y.js)",
+      "Bash(node /private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/ad8de294-a296-4cf2-b6bf-33f0d65acfb0/scratchpad/zoom2.js)",
+      "Bash(curl -s http://localhost:8899/index.html)",
+      "Bash(md5)",
+      "Bash(md5 \"/Users/ahmed/Desktop/untitled folder 2/index.html\")",
+      "Bash(sed -i '' 's|localhost:8899|localhost:8977|g' rev.js zoom2.js)",
+      "Bash(node zoom2.js)",
+      "Bash(node resp.js)"
+    ]
+  }
+}
