@@ -11,7 +11,23 @@
       "Bash(md5 \"/Users/ahmed/Desktop/untitled folder 2/index.html\")",
       "Bash(sed -i '' 's|localhost:8899|localhost:8977|g' rev.js zoom2.js)",
       "Bash(node zoom2.js)",
-      "Bash(node resp.js)"
+      "Bash(node resp.js)",
+      "Bash(ls -la \"/Users/ahmed/Desktop/untitled folder 2/img/\")",
+      "Bash(cp '/Users/ahmed/Desktop/untitled folder 2/img/logo.jpeg' /private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/ad8de294-a296-4cf2-b6bf-33f0d65acfb0/scratchpad/newlogo.jpeg)",
+      "Bash(cd /private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/ad8de294-a296-4cf2-b6bf-33f0d65acfb0/scratchpad)",
+      "Bash(sips -g pixelWidth -g pixelHeight newlogo.jpeg)",
+      "Bash(sips -s format png newlogo.jpeg --out newlogo.png)",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('joy_mob.png'\\); print\\(im.size\\)\")",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('joy_desktop.png'\\); print\\(im.size\\)\")",
+      "Bash(sips -g pixelWidth -g pixelHeight joy_desktop.png joy_mob.png newlogo.png)",
+      "Bash(python3 -c ' *)",
+      "Bash(sips joy_desktop.png -c 700 1440 --cropOffset 0 0 --out cl_hero.png)",
+      "Bash(sips joy_desktop.png -c 530 1440 --cropOffset 1500 0 --out cl_act.png)",
+      "Bash(sips joy_desktop.png -c 700 1440 --cropOffset 2020 0 --out cl_dark.png)",
+      "Bash(sips joy_desktop.png -c 750 1440 --cropOffset 2700 0 --out cl_cta.png)",
+      "Bash(sips -c 800 1440 --cropOffset 60 0 joy_desktop.png --out cl_hero2.png)",
+      "Bash(sips -c 700 1440 --cropOffset 1050 0 joy_desktop.png --out cl_srv.png)",
+      "Bash(grep -oiE '#[0-9a-f]{3,8}' index_live.html)"
     ]
   }
 }
