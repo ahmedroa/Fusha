@@ -27,7 +27,9 @@
       "Bash(sips joy_desktop.png -c 750 1440 --cropOffset 2700 0 --out cl_cta.png)",
       "Bash(sips -c 800 1440 --cropOffset 60 0 joy_desktop.png --out cl_hero2.png)",
       "Bash(sips -c 700 1440 --cropOffset 1050 0 joy_desktop.png --out cl_srv.png)",
-      "Bash(grep -oiE '#[0-9a-f]{3,8}' index_live.html)"
+      "Bash(grep -oiE '#[0-9a-f]{3,8}' index_live.html)",
+      "Bash(sips -Z 220 mark_sq.png --out mark_220.png)",
+      "Bash(cp mark_opt.png \"/Users/ahmed/Desktop/untitled folder 2/img/logo-mark.png\")"
     ]
   }
 }
