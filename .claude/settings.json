@@ -70,7 +70,22 @@
       "Bash(sips -Z 1600 userlogo.png --out ul_1600.png)",
       "Bash(sips -Z 1000 ul_alpha.png --out ul_1000.png)",
       "Bash(sips -Z 220 ul_alpha.png --out ul_220.png)",
-      "Bash(awk '/svc-grid/,/<\\\\/section>/' index.html)"
+      "Bash(awk '/svc-grid/,/<\\\\/section>/' index.html)",
+      "Bash(mv \"WhatsApp Image 1448-02-18 at 20.05.47 \\(3\\).jpeg\" work-01.jpeg)",
+      "Bash(mv \"WhatsApp Image 1448-02-18 at 20.05.47 \\(4\\).jpeg\" work-02.jpeg)",
+      "Bash(mv \"WhatsApp Image 1448-02-18 at 20.05.47 \\(5\\).jpeg\" work-03.jpeg)",
+      "Bash(mv \"WhatsApp Image 1448-02-18 at 20.07.31 \\(4\\).jpeg\" work-04.jpeg)",
+      "Bash(mv \"WhatsApp Image 1448-02-18 at 20.07.31 \\(5\\).jpeg\" work-05.jpeg)",
+      "Bash([ -x \"$CHROME\" ])",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=1280,4400 --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/550c3943-17c4-4f75-97fb-9aaf779826e0/scratchpad/full-desktop.png file:///Users/ahmed/Desktop/untitled%20folder%202/index.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=390,4400 --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/550c3943-17c4-4f75-97fb-9aaf779826e0/scratchpad/full-mobile.png file:///Users/ahmed/Desktop/untitled%20folder%202/index.html)",
+      "Bash(cp full-desktop.png gal-desktop.png)",
+      "Bash(sips -c 900 1280 --cropOffset 1050 0 gal-desktop.png)",
+      "Bash(cp full-mobile.png gal-mobile.png)",
+      "Bash(sips -c 800 390 --cropOffset 1500 0 gal-mobile.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight full-desktop.png full-mobile.png)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=500,4600 --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/550c3943-17c4-4f75-97fb-9aaf779826e0/scratchpad/m500.png file:///Users/ahmed/Desktop/untitled%20folder%202/index.html)",
+      "Bash(sips -c 700 500 --cropOffset 1350 0 m500-gal.png)"
     ]
   }
 }
