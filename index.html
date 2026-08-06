@@ -104,8 +104,6 @@
     background:radial-gradient(circle at 50% 44%, rgba(233,162,59,.30) 0%, rgba(233,162,59,.09) 42%, rgba(233,162,59,0) 68%);
   }
   .hero-logo img{position:relative;z-index:1;display:block;width:100%;height:auto}
-  /* كونفيتي صغير فوق الدائرة — صدى لرنّة جرس السبلاش */
-  .hero-confetti{position:absolute;top:-7%;right:50%;transform:translateX(50%);width:24%;z-index:2}
   .badge{
     display:inline-flex;align-items:center;gap:8px;
     background:rgba(233,162,59,.3);color:#8F3C19;
@@ -176,7 +174,7 @@
   .svc.coral:hover {border-color:rgba(143,175,102,.6)}
 
   /* ===== Activities ===== */
-  .acts{background:#EBEEDD}
+  .acts{background:var(--cream-2)}
   .acts-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
   /* ١١ بطاقة في ٥ أعمدة: الأخيرة تتوسط صفها على الشاشات الواسعة */
   @media (min-width:1025px){
@@ -463,15 +461,6 @@
     </div>
     <div class="hero-art">
       <div class="hero-logo">
-      <svg class="hero-confetti" viewBox="0 0 90 64" aria-hidden="true">
-        <g stroke-linecap="round" fill="none" stroke-width="6">
-          <path d="M14 40l-8-9" stroke="#F09C87"/>
-          <path d="M45 22V10" stroke="#52A08F"/>
-          <path d="M76 40l8-9" stroke="#E9A23B"/>
-          <path d="M27 28l-6-10" stroke="#E9A23B"/>
-          <path d="M63 28l6-10" stroke="#52A08F"/>
-        </g>
-      </svg>
       <img src="img/logo.png" width="997" height="1000" alt="شعار فُسحة — اللحظة اللي الكل يتحمس لها">
       </div>
     </div>
