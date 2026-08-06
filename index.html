@@ -150,7 +150,7 @@
 
   /* ===== Gallery =====
      معرض أعمال بلا عنوان — شريط يتحرك من اليمين لليسار ويتوقف عند مرور المؤشر */
-  .gal{padding-block:56px 0}
+  .gal{padding-block:0 56px}
   .gal-viewport{
     overflow:hidden;
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
@@ -388,7 +388,7 @@
   }
   @media (max-width:768px){
     section{padding-block:52px}
-    .gal{padding-block:44px 0}
+    .gal{padding-block:0 44px}
     .gal-item{padding:7px;margin-inline-end:14px}
     .gal-item img{height:215px}
     .svc-grid{grid-template-columns:1fr}
@@ -425,7 +425,7 @@
     .svc-grid{grid-template-columns:repeat(2,1fr)}
     .acts-grid{grid-template-columns:repeat(5,1fr)}
     .feat-grid{grid-template-columns:repeat(2,1fr)}
-    .gal{padding-block:22px 0}
+    .gal{padding-block:0 22px}
     .gal-viewport{overflow:visible;-webkit-mask-image:none;mask-image:none}
     .gal-track{animation:none;width:auto}
     .gal-set{flex-wrap:wrap;justify-content:center}
@@ -504,25 +504,6 @@
   </div>
 </section>
 
-<!-- ================= WHAT WE OFFER ================= -->
-<section class="offer" id="offer">
-  <div class="wrap offer-inner">
-    <div class="reveal">
-      <span class="kicker">ماذا نقدّم؟</span>
-      <h2>تجربة إبداعية.. لا ورشة رسم</h2>
-      <p>
-        نقدّم <span class="en">Creative Experience</span> — تجربة إبداعية تساعد المشارك على
-        الاسترخاء والتعبير عن ذاته من خلال نشاط فني بسيط، وسط أجواء مدروسة من الموسيقى الهادئة
-        والإضاءة الدافئة والروائح الخفيفة. لا تتطلب أي خبرة فنية.
-      </p>
-    </div>
-    <div class="note reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
-      <span><b>توضيح مهم:</b> «فُسحة» تجربة إبداعية للاسترخاء والتعبير عن الذات، وليست علاجًا نفسيًا ولا بديلًا عنه.</span>
-    </div>
-  </div>
-</section>
-
 <!-- ================= GALLERY ================= -->
 <section class="gal" id="gallery" aria-label="من أعمال وأجواء جلسات فُسحة">
   <div class="gal-viewport reveal">
@@ -552,6 +533,25 @@
         <figure class="gal-item"><img src="img/castmer/work-09.jpeg" width="1200" height="1600" loading="lazy" decoding="async" alt=""></figure>
         <figure class="gal-item"><img src="img/castmer/work-10.jpeg" width="1200" height="1600" loading="lazy" decoding="async" alt=""></figure>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT WE OFFER ================= -->
+<section class="offer" id="offer">
+  <div class="wrap offer-inner">
+    <div class="reveal">
+      <span class="kicker">ماذا نقدّم؟</span>
+      <h2>تجربة إبداعية.. لا ورشة رسم</h2>
+      <p>
+        نقدّم <span class="en">Creative Experience</span> — تجربة إبداعية تساعد المشارك على
+        الاسترخاء والتعبير عن ذاته من خلال نشاط فني بسيط، وسط أجواء مدروسة من الموسيقى الهادئة
+        والإضاءة الدافئة والروائح الخفيفة. لا تتطلب أي خبرة فنية.
+      </p>
+    </div>
+    <div class="note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+      <span><b>توضيح مهم:</b> «فُسحة» تجربة إبداعية للاسترخاء والتعبير عن الذات، وليست علاجًا نفسيًا ولا بديلًا عنه.</span>
     </div>
   </div>
 </section>

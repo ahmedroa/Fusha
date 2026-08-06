@@ -85,7 +85,12 @@
       "Bash(sips -c 800 390 --cropOffset 1500 0 gal-mobile.png)",
       "Bash(sips -g pixelWidth -g pixelHeight full-desktop.png full-mobile.png)",
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=500,4600 --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/550c3943-17c4-4f75-97fb-9aaf779826e0/scratchpad/m500.png file:///Users/ahmed/Desktop/untitled%20folder%202/index.html)",
-      "Bash(sips -c 700 500 --cropOffset 1350 0 m500-gal.png)"
+      "Bash(sips -c 700 500 --cropOffset 1350 0 m500-gal.png)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=1280,4400 --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/550c3943-17c4-4f75-97fb-9aaf779826e0/scratchpad/v2-desktop.png file:///Users/ahmed/Desktop/untitled%20folder%202/index.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=500,4600 --virtual-time-budget=6000 --screenshot=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/550c3943-17c4-4f75-97fb-9aaf779826e0/scratchpad/v2-mobile.png file:///Users/ahmed/Desktop/untitled%20folder%202/index.html)",
+      "Bash(cp v2-desktop.png v2-desktop-crop.png)",
+      "Bash(sips -c 1450 1280 --cropOffset 380 0 v2-desktop-crop.png)",
+      "Bash(cp v2-mobile.png v2-mobile-crop.png)"
     ]
   }
 }
