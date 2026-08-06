@@ -85,8 +85,8 @@
   .hero{
     position:relative;padding-block:60px 64px;overflow:hidden;
     background:
-      radial-gradient(44% 52% at 88% 10%, rgba(233,162,59,.14) 0%, rgba(233,162,59,0) 70%),
-      radial-gradient(40% 48% at 6% 88%, rgba(82,160,143,.12) 0%, rgba(82,160,143,0) 70%),
+      radial-gradient(44% 52% at 88% 10%, rgba(233,162,59,.24) 0%, rgba(233,162,59,0) 70%),
+      radial-gradient(40% 48% at 6% 88%, rgba(82,160,143,.20) 0%, rgba(82,160,143,0) 70%),
       linear-gradient(177deg, #F2E8D8 0%, #F6EFE5 62%);
   }
   /* حبيبات ورق فنّي خفيفة تمنح إحساس الورق المرسوم عليه */
@@ -104,10 +104,12 @@
     background:radial-gradient(circle at 50% 44%, rgba(233,162,59,.30) 0%, rgba(233,162,59,.09) 42%, rgba(233,162,59,0) 68%);
   }
   .hero-logo img{position:relative;z-index:1;display:block;width:100%;height:auto}
+  /* كونفيتي صغير فوق الدائرة — صدى لرنّة جرس السبلاش */
+  .hero-confetti{position:absolute;top:-7%;right:50%;transform:translateX(50%);width:24%;z-index:2}
   .badge{
     display:inline-flex;align-items:center;gap:8px;
-    background:rgba(233,162,59,.16);color:var(--coral);
-    border:1px solid rgba(233,162,59,.5);
+    background:rgba(233,162,59,.3);color:#8F3C19;
+    border:1px solid rgba(233,162,59,.6);
     padding:6px 16px;border-radius:100px;font-size:.82rem;font-weight:600;
     margin-bottom:20px;
   }
@@ -213,6 +215,8 @@
     transition:background .5s var(--ease);
   }
   .feat-item:nth-child(odd){border-inline-end:1px solid rgba(246,239,229,.16)}
+  /* عدد فردي: العنصر الأخير يمتد على العمودين */
+  .feat-item:last-child:nth-child(odd){grid-column:1/-1;border-inline-end:none}
   .feat-item:hover{background:#5C4936}
   /* الرقم صار عنصرًا جانبيًا كبيرًا بدل أن يعلو النص */
   .feat-item .num{
@@ -449,12 +453,21 @@
         ويخرج كل مشارك بقطعة صنعها بنفسه.
       </p>
       <div class="hero-cta">
-        <a href="#services" class="btn">الخدمات</a>
-        <a href="#contact" class="btn ghost">اطلب عرض سعر</a>
+        <a href="#contact" class="btn">اطلب عرض سعر</a>
+        <a href="#services" class="btn ghost">الخدمات</a>
       </div>
     </div>
     <div class="hero-art">
       <div class="hero-logo">
+      <svg class="hero-confetti" viewBox="0 0 90 64" aria-hidden="true">
+        <g stroke-linecap="round" fill="none" stroke-width="6">
+          <path d="M14 40l-8-9" stroke="#F09C87"/>
+          <path d="M45 22V10" stroke="#52A08F"/>
+          <path d="M76 40l8-9" stroke="#E9A23B"/>
+          <path d="M27 28l-6-10" stroke="#E9A23B"/>
+          <path d="M63 28l6-10" stroke="#52A08F"/>
+        </g>
+      </svg>
       <img src="img/logo.png" width="894" height="1000" alt="شعار فُسحة — اللحظة اللي الكل يتحمس لها">
       </div>
     </div>
@@ -559,21 +572,16 @@
         </div>
         <div class="feat-item reveal">
           <span class="num">٠٣</span>
-          <div class="feat-txt"><b>تغليف جميل للأعمال</b>
-          <p>كل قطعة تُغلّف بعناية لتعود مع صاحبها كأنها هدية.</p></div>
+          <div class="feat-txt"><b>تزيين بالكريستالات</b>
+          <p>لمسات كريستال تُضاف لقطعتك فتزيدها لمعانًا وتميّزًا.</p></div>
         </div>
         <div class="feat-item reveal">
           <span class="num">٠٤</span>
-          <div class="feat-txt"><b>هدية أو تذكار بسيط</b>
-          <p>لفتة صغيرة تختم التجربة وتبقى ذكرى مع المشارك.</p></div>
-        </div>
-        <div class="feat-item reveal">
-          <span class="num">٠٥</span>
           <div class="feat-txt"><b>تصوير اختياري</b>
           <p>توثيق احترافي للجلسة عند الرغبة — مناسب للمقاهي والفعاليات.</p></div>
         </div>
         <div class="feat-item reveal">
-          <span class="num">٠٦</span>
+          <span class="num">٠٥</span>
           <div class="feat-txt"><b>تخصيص حسب المناسبة</b>
           <p>نكيّف النشاط والألوان والتفاصيل لتناسب مناسبتك وهويتك.</p></div>
         </div>
@@ -607,13 +615,11 @@
       <h2>جاهزون لتجهيز تجربتكم</h2>
       <p>أرسل لنا نوع المناسبة والمكان والعدد التقريبي، ونرجع لك بتصور كامل للتجربة وعرض سعر.</p>
       <div class="cta-actions">
-        <!-- ✏️ عدّل رقم الواتساب هنا: استبدل 9665XXXXXXXX برقمك -->
-        <a class="btn light" href="https://wa.me/9665XXXXXXXX" target="_blank" rel="noopener">
+        <a class="btn light" href="https://wa.me/966561556031" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M9 8.5c0 4 2.5 6.5 6.5 6.5l1-2-2.5-1-1 1c-1.5-.5-2-1-2.5-2.5l1-1-1-2.5-1.5 1.5Z"/></svg>
           واتساب
         </a>
-        <!-- ✏️ عدّل البريد هنا: استبدله ببريد المشروع الرسمي عند تجهيزه -->
-        <a class="btn outline" href="mailto:aahmedkro@gmail.com">
+        <a class="btn outline" href="mailto:Fosah.ex@gmail.com">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16v12H4Z"/><path d="M4 7l8 6 8-6"/></svg>
           راسلنا
         </a>
