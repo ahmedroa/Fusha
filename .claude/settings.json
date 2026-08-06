@@ -64,7 +64,12 @@
       "Bash(node ctaprobe.mjs 414 cta_414.png)",
       "Bash(node ctaprobe.mjs 768 cta_768.png)",
       "Bash(python3 cta_contrast.py 360 414 768)",
-      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --remote-debugging-port=9333 --no-first-run --no-default-browser-check --disable-gpu --user-data-dir=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/ad8de294-a296-4cf2-b6bf-33f0d65acfb0/scratchpad/cp4 about:blank)"
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --remote-debugging-port=9333 --no-first-run --no-default-browser-check --disable-gpu --user-data-dir=/private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/ad8de294-a296-4cf2-b6bf-33f0d65acfb0/scratchpad/cp4 about:blank)",
+      "Bash(cp '/Users/ahmed/Desktop/untitled folder 2/logo.png' /private/tmp/claude-501/-Users-ahmed-Desktop-untitled-folder-2/ad8de294-a296-4cf2-b6bf-33f0d65acfb0/scratchpad/userlogo.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha userlogo.png)",
+      "Bash(sips -Z 1600 userlogo.png --out ul_1600.png)",
+      "Bash(sips -Z 1000 ul_alpha.png --out ul_1000.png)",
+      "Bash(sips -Z 220 ul_alpha.png --out ul_220.png)"
     ]
   }
 }

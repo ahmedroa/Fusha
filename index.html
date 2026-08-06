@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>فُسحة — تجربة إبداعية | ملف الخدمات</title>
-<meta name="description" content="فُسحة — تجربة إبداعية (Creative Therapy Experience) تساعد على الاسترخاء والتعبير عن الذات. ننفّذها في المقاهي والمنازل والشركات والمناسبات الخاصة.">
+<meta name="description" content="فُسحة — تجربة إبداعية (Creative Experience) تساعد على الاسترخاء والتعبير عن الذات. ننفّذها في المقاهي والمنازل والشركات والمناسبات الخاصة.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_SA">
 <meta property="og:site_name" content="فُسحة">
@@ -178,6 +178,10 @@
   /* ===== Activities ===== */
   .acts{background:#EBEEDD}
   .acts-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  /* ١١ بطاقة في ٥ أعمدة: الأخيرة تتوسط صفها على الشاشات الواسعة */
+  @media (min-width:1025px){
+    .acts-grid .act:last-child:nth-child(5n+1){grid-column:3}
+  }
   .act{
     background:var(--cream);border:1px solid var(--line);border-radius:16px;
     padding:22px 12px;text-align:center;
@@ -432,7 +436,7 @@
 <header>
   <div class="wrap nav">
     <a href="#top" class="logo" aria-label="فُسحة">
-      <img src="img/logo-mark.png" width="220" height="220" alt="">
+      <img src="img/logo-mark.png" width="219" height="220" alt="">
       <span class="logo-name">فُسحة</span>
     </a>
     <a href="#contact" class="btn">تواصل معنا</a>
@@ -445,7 +449,7 @@
 <section class="hero">
   <div class="wrap hero-inner">
     <div>
-      <span class="badge"><span class="dot"></span> Creative Therapy Experience</span>
+      <span class="badge"><span class="dot"></span> Creative Experience</span>
       <h1>تجربة إبداعية<br><em>تصنع لحظة هادئة</em></h1>
       <p>
         «فُسحة» تجربة فنية بسيطة نجهّزها بالكامل، تمنح المشاركين مساحة للاسترخاء والتعبير عن أنفسهم.
@@ -468,7 +472,7 @@
           <path d="M63 28l6-10" stroke="#52A08F"/>
         </g>
       </svg>
-      <img src="img/logo.png" width="894" height="1000" alt="شعار فُسحة — اللحظة اللي الكل يتحمس لها">
+      <img src="img/logo.png" width="997" height="1000" alt="شعار فُسحة — اللحظة اللي الكل يتحمس لها">
       </div>
     </div>
   </div>
@@ -481,7 +485,7 @@
       <span class="kicker">ماذا نقدّم؟</span>
       <h2>تجربة إبداعية.. لا ورشة رسم</h2>
       <p>
-        نقدّم <span class="en">Creative Therapy Experience</span> — تجربة إبداعية تساعد المشارك على
+        نقدّم <span class="en">Creative Experience</span> — تجربة إبداعية تساعد المشارك على
         الاسترخاء والتعبير عن ذاته من خلال نشاط فني بسيط، وسط أجواء مدروسة من الموسيقى الهادئة
         والإضاءة الدافئة والروائح الخفيفة. لا تتطلب أي خبرة فنية.
       </p>
@@ -518,8 +522,7 @@
       </article>
       <article class="svc coral reveal">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><path d="M12 3l2.4 5.2 5.6.7-4.2 3.9 1.1 5.6L12 15.7 7.1 18.4l1.1-5.6L4 8.9l5.6-.7L12 3Z"/></svg></span>
-        <b>تجارب مخصّصة</b>
-        <p>نصمّم التجربة والنشاط والتفاصيل خصيصًا حسب مناسبتك وهويتك.</p>
+        <b></b>
       </article>
     </div>
   </div>
@@ -542,6 +545,7 @@
       <div class="act reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><path d="M6 3h12v18H6Z"/><path d="M9 3v18M12.5 8h3M12.5 12h3"/></svg></span><b>تزيين الدفاتر</b></div>
       <div class="act reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16v12H4Z"/><path d="M4 7l8 6 8-6"/></svg></span><b>رسائل للنفس</b></div>
       <div class="act reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><path d="M14.5 4.5l5 5L8 21H4v-4L15.5 5.5"/><path d="M13 7l4 4"/></svg></span><b>الرسم الحر</b></div>
+      <div class="act reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4h9l4 5.5L12 21 3.5 9.5 7.5 4Z"/><path d="M3.5 9.5h17M9.5 9.5 12 21l2.5-11.5M9.5 9.5 12 4l2.5 5.5"/></svg></span><b>تزيين بالكريستالات</b></div>
       <div class="act reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="7" r="3.5"/><path d="M7 21c0-4 2-7 5-7s5 3 5 7"/></svg></span><b>تلوين المجسمات</b></div>
     </div>
   </div>
@@ -634,7 +638,7 @@
 <footer>
   <div class="wrap foot">
     <a href="#top" class="logo">
-      <img src="img/logo-mark.png" width="220" height="220" alt="">
+      <img src="img/logo-mark.png" width="219" height="220" alt="">
       <span class="logo-name">فُسحة</span>
     </a>
     <span class="disc">تجربة إبداعية للاسترخاء والتعبير عن الذات — وليست علاجًا نفسيًا.</span>
