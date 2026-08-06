@@ -69,7 +69,8 @@
       "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha userlogo.png)",
       "Bash(sips -Z 1600 userlogo.png --out ul_1600.png)",
       "Bash(sips -Z 1000 ul_alpha.png --out ul_1000.png)",
-      "Bash(sips -Z 220 ul_alpha.png --out ul_220.png)"
+      "Bash(sips -Z 220 ul_alpha.png --out ul_220.png)",
+      "Bash(awk '/svc-grid/,/<\\\\/section>/' index.html)"
     ]
   }
 }
