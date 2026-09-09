@@ -27,7 +27,7 @@
     --teal:#52A08F;       /* تركوازي بهيج */
     --teal-deep:#256859;
     --blush:#F09C87;      /* وردي مرجاني فاتح */
-    --line:rgba(110,93,72,.2);
+    --line:rgba(110,93,72,.2); 
     --radius:20px;
     --shadow:0 22px 50px -26px rgba(78,61,48,.3);
     --ease:cubic-bezier(.25,.62,.3,1);   /* منحنى واحد لكل الحركة — تباطؤ لطيف */
@@ -170,6 +170,20 @@
   .no-js .gal-track{animation:none}
   .no-js .gal-viewport{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
   .no-js .gal-set[aria-hidden]{display:none}
+
+  /* على اللمس: الشريط يُسحب بالإصبع — نوقف الحركة التلقائية ونسلّم القيادة للمستخدم */
+  /* ملاحظة: بلا scroll-snap عمدًا — التثبيت يشدّ الشريط لأقرب صورة
+     فيبتلع الحركة التلقائية البطيئة ويوقفها تمامًا */
+  .gal-viewport.is-swipe{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    touch-action:pan-x pan-y;
+    overscroll-behavior-x:contain;
+  }
+  .gal-viewport.is-swipe::-webkit-scrollbar{display:none}
+  /* أثناء السحب نجمّد الحركة حتى لا تتنازع مع إصبع المستخدم */
+  .gal.dragging .gal-track{animation-play-state:paused!important}
 
   /* ===== Services ===== */
   .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -812,6 +826,82 @@
   if (gal) {
     new IntersectionObserver(es => es.forEach(e => gal.classList.toggle('on', e.isIntersecting)), { rootMargin: '80px' }).observe(gal);
   }
+
+  // ===== المعرض على الجوال: سحب بالإصبع =====
+  // على أجهزة اللمس نستبدل حركة CSS بتمرير فعلي يقدر المستخدم أن يمسكه ويلف الصور بنفسه.
+  (function () {
+    if (!gal) return;
+    const viewport = gal.querySelector('.gal-viewport');
+    const track = gal.querySelector('.gal-track');
+    if (!viewport || !track) return;
+
+    const canHover = matchMedia('(hover:hover)').matches;
+    const reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if (canHover) return;               // ماوس؟ سلوك الحركة الأصلي يكفي
+    if (!('ontouchstart' in window) && !navigator.maxTouchPoints) return;
+
+    // نسلّم التمرير للمستخدم: الحركة صارت بالجافاسكربت لا بـ CSS
+    viewport.classList.add('is-swipe');
+    track.style.animation = 'none';
+
+    // النسخة الثانية موجودة أصلًا في HTML لإكمال الحلقة، فنصف عرض المسار = دورة كاملة
+    const loopWidth = () => track.scrollWidth / 2;
+
+    // الصفحة RTL: المتصفحات الحديثة تجعل scrollLeft سالبًا في هذا الاتجاه.
+    // نتعامل مع مسافة موجبة دائمًا ثم نعيد الإشارة عند الكتابة، فيستوي RTL و LTR.
+    const rtl = getComputedStyle(viewport).direction === 'rtl';
+    const sign = rtl ? -1 : 1;
+    const getPos = () => Math.abs(viewport.scrollLeft);
+    // نرفع العلم قبل الكتابة كي يعرف مستمع scroll أن هذه حركتنا نحن لا حركة المستخدم
+    let selfScroll = false;
+    const setPos = v => { selfScroll = true; viewport.scrollLeft = sign * v; };
+
+    let held = false;      // إصبع المستخدم على الشاشة
+    let idle = 0;          // متى نستأنف الحركة بعد أن يرفع إصبعه
+    const SPEED = 28;      // بكسل في الثانية — بطيء بما يكفي ليقرأ الصور
+    const RESUME_MS = 2200;
+    // المتصفح يقرّب scrollLeft لعدد صحيح، فلو زدنا أقل من بكسل ضاعت الزيادة
+    // وبقي الشريط ساكنًا. نراكم الموضع كعدد عشري ونكتب المقرَّب منه.
+    let pos = 0, last = 0;
+
+    const hold = () => { held = true; gal.classList.add('dragging'); };
+    const release = () => { held = false; idle = performance.now(); gal.classList.remove('dragging'); };
+
+    viewport.addEventListener('touchstart', hold, { passive: true });
+    viewport.addEventListener('touchend', release, { passive: true });
+    viewport.addEventListener('touchcancel', release, { passive: true });
+    // التمرير بالقصور الذاتي (momentum) يستمر بعد رفع الإصبع — نؤجّل الاستئناف.
+    // أما تمريرنا التلقائي فنتجاهله، وإلا أجّل نفسه إلى الأبد فلا تعود الحركة أبدًا.
+    viewport.addEventListener('scroll', () => {
+      if (selfScroll) { selfScroll = false; return; }
+      idle = performance.now();
+    }, { passive: true });
+
+    // نبدأ من نقطة تسمح باللف في الاتجاهين دون أن يصطدم المستخدم بالحافة
+    const start = () => { pos = loopWidth() / 2; setPos(pos); };
+    if (document.readyState === 'complete') start();
+    else addEventListener('load', start, { once: true });
+
+    let visible = true;
+    new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; }), { rootMargin: '80px' }).observe(gal);
+
+    function tick(now) {
+      const dt = last ? Math.min((now - last) / 1000, .05) : 0;  // نتجاهل الفجوات الطويلة
+      last = now;
+      const w = loopWidth();
+      if (w > 0) {
+        // أثناء لمس المستخدم نتابع موضعه حتى نكمل من حيث ترك
+        if (held || now - idle <= RESUME_MS) pos = getPos();
+        else if (!reduced && visible) { pos += SPEED * dt; setPos(pos); }
+
+        // اللف اللانهائي: نعيد الموضع لمنتصف المسار بلا أي قفزة مرئية
+        if (pos >= w * 1.5) { pos -= w; setPos(pos); }
+        else if (pos <= w * .5 - 1) { pos += w; setPos(pos); }
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
 
   // ===== نموذج الطلب: يبني رسالة واتساب جاهزة من الإجابات =====
   (function(){
